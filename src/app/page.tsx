@@ -104,7 +104,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-gray-100">
-      <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-xl sticky top-0 z-10">
+      <header className="border-b border-gray-800 bg-slate-900 backdrop-blur-xl sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
             <CircleDollarSign className="w-8 h-8 text-sky-500" />
@@ -130,7 +130,7 @@ export default function Home() {
               onMarkPaid={handleMarkPaid}
             />
           ) : (
-            <div className="flex-1 flex items-center justify-center bg-gray-900/50 p-8 rounded-xl border border-gray-800">
+            <div className="flex-1 flex items-center justify-center bg-slate-900 p-8 rounded-xl border border-gray-800">
               <p className="text-gray-400 text-lg">
                 Select a person to view or add debts
               </p>
@@ -271,7 +271,7 @@ export default function Home() {
 
 //   return (
 //     <div className="min-h-screen text-gray-100">
-//       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-xl sticky top-0 z-10">
+//       <header className="border-b border-gray-800 bg-slate-900 backdrop-blur-xl sticky top-0 z-10">
 //         <div className="max-w-7xl mx-auto px-4 py-4">
 //           <div className="flex items-center gap-3">
 //             <CircleDollarSign className="w-8 h-8 text-sky-500" />
@@ -297,7 +297,7 @@ export default function Home() {
 //               onMarkPaid={handleMarkPaid}
 //             />
 //           ) : (
-//             <div className="flex-1 flex items-center justify-center bg-gray-900/50 p-8 rounded-xl border border-gray-800">
+//             <div className="flex-1 flex items-center justify-center bg-slate-900 p-8 rounded-xl border border-gray-800">
 //               <p className="text-gray-400 text-lg">
 //                 Select a person to view or add debts
 //               </p>

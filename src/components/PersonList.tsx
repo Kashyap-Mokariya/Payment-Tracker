@@ -23,7 +23,7 @@ export function PersonList({ people, onSelectPerson, onAddPerson, selectedPerson
   };
 
   return (
-    <div className="w-80 bg-gray-900/50 p-4 rounded-xl border border-gray-800">
+    <div className="w-80 bg-slate-900 p-4 rounded-xl border border-gray-800">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <Users className="w-5 h-5 text-sky-500" />
@@ -71,8 +71,8 @@ export function PersonList({ people, onSelectPerson, onAddPerson, selectedPerson
             key={person.id}
             onClick={() => onSelectPerson(person)}
             className={`w-full p-3 text-left rounded-lg ${selectedPersonId === person.id
-                ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400'
-                : 'hover:bg-gray-800 border border-transparent'
+              ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400'
+              : 'hover:bg-gray-800 border border-transparent'
               }`}
           >
             <div className="font-medium">{person.name}</div>

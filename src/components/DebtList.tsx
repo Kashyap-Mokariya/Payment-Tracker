@@ -53,7 +53,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
   const paidDebts = personDebts.filter((debt) => debt.isPaid);
 
   return (
-    <div className="flex-1 bg-gray-900/50 p-6 rounded-xl border border-gray-800">
+    <div className="flex-1 bg-slate-900 p-6 rounded-xl border border-gray-800">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-medium text-gray-100">{person.name}'s Debts</h2>
         <button
@@ -66,7 +66,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
       </div>
 
       {isAdding && (
-        <form onSubmit={handleSubmit} className="mb-6 p-4 border border-gray-800 rounded-xl bg-gray-900/50">
+        <form onSubmit={handleSubmit} className="mb-6 p-4 border border-gray-800 rounded-xl bg-slate-900">
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <label className="block text-sm font-medium mb-1 text-gray-300">Amount ($)</label>
@@ -131,7 +131,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
             {activeDebts.map((debt) => (
               <div
                 key={debt.id}
-                className="flex items-center justify-between p-4 border border-gray-800 rounded-xl bg-gray-900/50 hover:bg-gray-900"
+                className="flex items-center justify-between p-4 border border-gray-800 rounded-xl bg-slate-900 hover:bg-gray-900"
               >
                 <div>
                   <div className="font-medium text-gray-100">{debt.description}</div>
