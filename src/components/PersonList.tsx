@@ -35,41 +35,41 @@ export function PersonList({
   };
 
   return (
-    <div className="w-80 bg-slate-900 p-4 rounded-xl border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
+    <div className="w-full sm:w-80 bg-slate-900 p-3 sm:p-4 rounded-xl border border-gray-800">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <div className="flex items-center gap-2">
-          <Users className="w-5 h-5 text-sky-500" />
-          <h2 className="font-medium text-gray-100">People</h2>
+          <Users className="w-4 h-4 sm:w-5 sm:h-5 text-sky-500" />
+          <h2 className="font-medium text-gray-100 text-sm sm:text-base">People</h2>
         </div>
         <button
           onClick={() => setIsAdding(true)}
-          className="p-1.5 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-gray-100"
+          className="p-1 sm:p-1.5 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-gray-100"
         >
-          <Plus size={20} />
+          <Plus size={18} className="sm:w-5 sm:h-5" />
         </button>
       </div>
 
       {isAdding && (
-        <form onSubmit={handleSubmit} className="mb-4">
+        <form onSubmit={handleSubmit} className="mb-3 sm:mb-4">
           <input
             type="text"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="person's name"
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg mb-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-sky-500"
+            className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg mb-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-sky-500 text-sm sm:text-base"
             autoFocus
           />
           <div className="flex gap-2">
             <button
               type="submit"
-              className="px-3 py-1.5 bg-sky-500 text-white rounded-lg text-sm hover:bg-sky-400"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 bg-sky-500 text-white rounded-lg text-sm hover:bg-sky-400"
             >
               Add
             </button>
             <button
               type="button"
               onClick={() => setIsAdding(false)}
-              className="px-3 py-1.5 bg-gray-800 text-gray-300 rounded-lg text-sm hover:bg-gray-700"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-800 text-gray-300 rounded-lg text-sm hover:bg-gray-700"
             >
               Cancel
             </button>
@@ -77,38 +77,39 @@ export function PersonList({
         </form>
       )}
 
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         {people.map((person) => (
           <div
             key={person.id}
-            className={`w-full p-3 rounded-lg flex justify-between items-start ${
-              selectedPersonId === person.id
+            className={`w-full p-2 sm:p-3 rounded-lg flex justify-between items-start ${selectedPersonId === person.id
                 ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400'
                 : 'hover:bg-gray-800 border border-transparent'
-            }`}
+              }`}
           >
             <button
               onClick={() => onSelectPerson(person)}
               className="text-left flex-1"
             >
-              <div className="font-medium flex">
+              <div className="font-medium flex text-sm sm:text-base">
                 {person.name}
               </div>
-              <div className={`text-sm ${
-                selectedPersonId === person.id ? 'text-sky-300/70' : 'text-gray-400'
-              }`}>
+              <div className={`text-xs sm:text-sm ${selectedPersonId === person.id ? 'text-sky-300/70' : 'text-gray-400'
+                }`}>
                 Due: ${person.totalDue.toFixed(2)}
               </div>
             </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onDeletePerson(person.id);
-              }}
-              className="p-1.5 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-red-400"
-            >
-              <Minus size={16} />
-            </button>
+            
+            <div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDeletePerson(person.id);
+                }}
+                className="p-1 sm:p-1.5 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-red-400"
+              >
+                <Minus size={14} className="sm:w-4 sm:h-4" />
+              </button>
+            </div>
           </div>
         ))}
       </div>

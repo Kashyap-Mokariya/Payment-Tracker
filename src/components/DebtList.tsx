@@ -53,12 +53,12 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
   const paidDebts = personDebts.filter((debt) => debt.isPaid);
 
   return (
-    <div className="flex-1 bg-slate-900 p-6 rounded-xl border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
+    <div className="flex-1 bg-slate-900 p-3 sm:p-6 rounded-xl border border-gray-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
         <h2 className="text-xl font-medium text-gray-100">{person.name}'s Debts</h2>
         <button
           onClick={() => setIsAdding(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-400"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-400 w-full sm:w-auto"
         >
           <Plus size={20} />
           Add debt
@@ -66,8 +66,8 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
       </div>
 
       {isAdding && (
-        <form onSubmit={handleSubmit} className="mb-6 p-4 border border-gray-800 rounded-xl bg-slate-900">
-          <div className="grid grid-cols-2 gap-4 mb-4">
+        <form onSubmit={handleSubmit} className="mb-6 p-3 sm:p-4 border border-gray-800 rounded-xl bg-slate-900">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label className="block text-sm font-medium mb-1 text-gray-300">Amount ($)</label>
               <div className="relative">
@@ -106,17 +106,17 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
               required
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <button
               type="submit"
-              className="px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-400"
+              className="w-full sm:w-auto px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-400"
             >
               Add debt
             </button>
             <button
               type="button"
               onClick={() => setIsAdding(false)}
-              className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700"
+              className="w-full sm:w-auto px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700"
             >
               Cancel
             </button>
@@ -131,7 +131,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
             {activeDebts.map((debt) => (
               <div
                 key={debt.id}
-                className="flex items-center justify-between p-4 border border-gray-800 rounded-xl bg-slate-900 hover:bg-gray-900"
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-gray-800 rounded-xl bg-slate-900 hover:bg-gray-900 gap-4"
               >
                 <div>
                   <div className="font-medium text-gray-100">{debt.description}</div>
@@ -139,11 +139,11 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
                     {format(new Date(debt.date), 'MMM d, yyyy')}
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <div className="font-medium text-gray-100">${debt.amount.toFixed(2)}</div>
                   <button
                     onClick={() => onMarkPaid(debt.id)}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-400 rounded-lg hover:bg-green-500/20"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-400 rounded-lg hover:bg-green-500/20"
                   >
                     <Check size={16} />
                     Mark Paid
@@ -163,7 +163,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
             {paidDebts.map((debt) => (
               <div
                 key={debt.id}
-                className="flex items-center justify-between p-4 rounded-xl bg-gray-900/30 border border-gray-800/50"
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-gray-900/30 border border-gray-800/50 gap-4"
               >
                 <div>
                   <div className="font-medium text-gray-300">{debt.description}</div>
