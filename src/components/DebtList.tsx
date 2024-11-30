@@ -217,7 +217,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
   const [newDebt, setNewDebt] = useState({
     amount: '',
     description: '',
-    date: format(new Date(), 'dd/MM/yyyy'),
+    date: format(new Date(), 'yyyy-MM-dd'),
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -229,7 +229,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
         description: newDebt.description,
         date: newDebt.date,
       });
-      setNewDebt({ amount: '', description: '', date: format(new Date(), 'dd/MM/yyyy') });
+      setNewDebt({ amount: '', description: '', date: format(new Date(), 'yyyy-MM-dd') });
       setIsAdding(false);
     }
   };
