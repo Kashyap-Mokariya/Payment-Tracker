@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { CircleDollarSign } from 'lucide-react';
+import { CircleDollarSign, IndianRupee } from 'lucide-react';
 import { PersonList } from '@/components/PersonList';
 import { DebtList } from '@/components/DebtList';
 
@@ -137,8 +137,8 @@ export default function Home() {
       <header className="border-b border-gray-800 bg-slate-900 backdrop-blur-xl sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
-            <CircleDollarSign className="w-6 h-6 md:w-8 md:h-8 text-sky-500" />
-            <h1 className="text-lg md:text-xl font-semibold text-gray-100">Debt Tracker</h1>
+            <IndianRupee className="w-6 h-6 md:w-8 md:h-8 text-sky-500" />
+            <h1 className="text-lg md:text-xl font-semibold text-gray-100">Payment Tracker</h1>
           </div>
         </div>
       </header>

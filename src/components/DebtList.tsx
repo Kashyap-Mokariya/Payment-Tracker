@@ -1,5 +1,5 @@
 // import { format } from 'date-fns';
-// import { Plus, Calendar, DollarSign, Check } from 'lucide-react';
+// import { Plus, Calendar, IndianRupee, Check } from 'lucide-react';
 // import { useState } from 'react';
 
 // // Define interfaces for Person and Debt
@@ -71,7 +71,7 @@
 //             <div>
 //               <label className="block text-sm font-medium mb-1 text-gray-300">Amount ($)</label>
 //               <div className="relative">
-//                 <DollarSign className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
+//                 <IndianRupee className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
 //                 <input
 //                   type="number"
 //                   step="0.01"
@@ -185,7 +185,7 @@
 // }
 
 import { format } from 'date-fns';
-import { Plus, Calendar, DollarSign, Check } from 'lucide-react';
+import { Plus, Calendar, IndianRupee, Check } from 'lucide-react';
 import { useState } from 'react';
 
 // Define interfaces for Person and Debt
@@ -255,9 +255,9 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
         <form onSubmit={handleSubmit} className="mb-6 p-3 sm:p-4 border border-gray-800 rounded-xl bg-slate-900">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Amount ($)</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">Amount (₹)</label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
+                <IndianRupee className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
                 <input
                   type="number"
                   step="0.01"
@@ -326,7 +326,7 @@ export function DebtList({ person, debts, onAddDebt, onMarkPaid }: DebtListProps
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <div className="font-medium text-gray-100">${debt.amount.toFixed(2)}</div>
+                  <div className="font-medium text-gray-100">₹{debt.amount.toFixed(2)}</div>
                   <button
                     onClick={() => onMarkPaid(debt.id)}
                     className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-400 rounded-lg hover:bg-green-500/20"

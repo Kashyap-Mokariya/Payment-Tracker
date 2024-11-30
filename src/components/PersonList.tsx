@@ -133,7 +133,7 @@ export function PersonList({
               <div className={`text-xs sm:text-sm ${
                 selectedPersonId === person.id ? 'text-sky-300/70' : 'text-gray-400'
               }`}>
-                Due: ${person.totalDue.toFixed(2)}
+                Due: ₹{person.totalDue.toFixed(2)}
               </div>
             </button>
             
