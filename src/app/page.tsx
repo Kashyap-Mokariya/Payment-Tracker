@@ -49,6 +49,36 @@ export default function Home() {
     const newPerson = await response.json();
     setPeople([...people, newPerson]);
   };
+  
+  const handleDeletePerson = async (id: string) => {
+    try {
+      const response = await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'deletePerson',
+          personId: id
+        })
+      });
+
+      if (!response.ok) throw new Error('Failed to delete person');
+
+      await response.json(); // Handle the response
+
+      // Remove person from local state
+      setPeople(people.filter(person => person.id !== id));
+
+      // Remove associated debts from local state
+      setDebts(debts.filter(debt => debt.personId !== id));
+
+      // If the deleted person was selected, clear the selection
+      if (selectedPerson?.id === id) {
+        setSelectedPerson(null);
+      }
+    } catch (error) {
+      console.error('Error deleting person:', error);
+    }
+  };
 
   const handleAddDebt = async (debt: Omit<debt, 'id' | 'isPaid' | 'paidDate'>) => {
     const response = await fetch('/api/data', {
@@ -119,6 +149,7 @@ export default function Home() {
             people={people}
             onSelectPerson={setSelectedPerson}
             onAddPerson={handleAddPerson}
+            onDeletePerson={handleDeletePerson}
             selectedPersonId={selectedPerson?.id}
           />
 

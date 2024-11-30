@@ -1,15 +1,27 @@
-import { Plus, Users } from 'lucide-react';
+import { Delete, Minus, Plus, Users } from 'lucide-react';
 import { useState } from 'react';
-import { person } from '../types';
+
+interface person {
+  id: string;
+  name: string;
+  totalDue: number;
+}
 
 interface PersonListProps {
   people: person[];
   onSelectPerson: (person: person) => void;
   onAddPerson: (name: string) => void;
+  onDeletePerson: (id: string) => void;
   selectedPersonId?: string;
 }
 
-export function PersonList({ people, onSelectPerson, onAddPerson, selectedPersonId }: PersonListProps) {
+export function PersonList({ 
+  people, 
+  onSelectPerson, 
+  onAddPerson, 
+  onDeletePerson, 
+  selectedPersonId 
+}: PersonListProps) {
   const [isAdding, setIsAdding] = useState(false);
   const [newName, setNewName] = useState('');
 
@@ -67,20 +79,37 @@ export function PersonList({ people, onSelectPerson, onAddPerson, selectedPerson
 
       <div className="space-y-2">
         {people.map((person) => (
-          <button
+          <div
             key={person.id}
-            onClick={() => onSelectPerson(person)}
-            className={`w-full p-3 text-left rounded-lg ${selectedPersonId === person.id
-              ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400'
-              : 'hover:bg-gray-800 border border-transparent'
-              }`}
+            className={`w-full p-3 rounded-lg flex justify-between items-start ${
+              selectedPersonId === person.id
+                ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400'
+                : 'hover:bg-gray-800 border border-transparent'
+            }`}
           >
-            <div className="font-medium">{person.name}</div>
-            <div className={`text-sm ${selectedPersonId === person.id ? 'text-sky-300/70' : 'text-gray-400'
+            <button
+              onClick={() => onSelectPerson(person)}
+              className="text-left flex-1"
+            >
+              <div className="font-medium flex">
+                {person.name}
+              </div>
+              <div className={`text-sm ${
+                selectedPersonId === person.id ? 'text-sky-300/70' : 'text-gray-400'
               }`}>
-              Due: ${person.totalDue.toFixed(2)}
-            </div>
-          </button>
+                Due: ${person.totalDue.toFixed(2)}
+              </div>
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDeletePerson(person.id);
+              }}
+              className="p-1.5 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-red-400"
+            >
+              <Minus size={16} />
+            </button>
+          </div>
         ))}
       </div>
     </div>

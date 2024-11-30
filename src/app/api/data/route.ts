@@ -70,6 +70,23 @@ export async function POST(request: Request) {
                 });
 
                 return NextResponse.json(updatedDebt);
+            
+            case 'deletePerson':
+                // Delete all associated debts first
+                await db.debt.deleteMany({
+                    where: {
+                        personId: payload.personId
+                    }
+                });
+
+                // Then delete the person
+                const deletedPerson = await db.person.delete({
+                    where: {
+                        id: payload.personId
+                    }
+                });
+
+                return NextResponse.json(deletedPerson);
 
             default:
                 return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
